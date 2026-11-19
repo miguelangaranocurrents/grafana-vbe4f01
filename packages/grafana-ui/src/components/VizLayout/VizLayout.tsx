@@ -68,16 +68,13 @@ export const VizLayout: VizLayoutComponentType = ({ width, height, legend, child
       containerStyle.flexDirection = 'column';
       legendStyle.maxHeight = maxHeight;
 
-      if (legendMeasure.height) {
-        size = { width, height: height - legendMeasure.height };
-      }
+      // always size the viz: an empty legend measures 0 and is handled by the fallback below
+      size = { width, height: height - legendMeasure.height };
       break;
     case 'right':
       containerStyle.flexDirection = 'row';
 
-      if (legendMeasure.width) {
-        size = { width: width - legendMeasure.width, height };
-      }
+      size = { width: width - legendMeasure.width, height };
 
       if (typeof legend.props.width === 'string') {
         legendStyle.width = legend.props.width;
